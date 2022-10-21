@@ -1,9 +1,11 @@
 import GalleryItem from "../GalleryItem/GalleryItem";
-function GalleryList({gallery, putGallery}){
+
+function GalleryList({gallery, putGallery, clicked}){
+    
     return (
-        gallery.map(item =>{
-            <GalleryItem gallery={gallery} putGallery={putGallery}/>
-        })
+        gallery.map(item =>(
+            <GalleryItem item={item} putGallery={putGallery} clicked={clicked}/>
+        ))
     )
 }
 

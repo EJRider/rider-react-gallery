@@ -7,6 +7,7 @@ import GalleryList from '../GalleryList/GalleryList';
 function App() {
 
   let [gallery, setGallery] = useState([]);
+  let [clicked, setClicked] = useState(false);
 
     useEffect(()=>{
       getGallery();
@@ -37,8 +38,7 @@ function App() {
           <h1 className="App-title">Animal Gallery</h1>
         </header>
         <p>Gallery goes here</p>
-        <img src="images/goat_small.jpg"/>
-        <GalleryList gallery={gallery} putGallery={putGallery}/>
+        <GalleryList gallery={gallery} putGallery={putGallery} clicked={clicked}/>
       </div>
     );
 }

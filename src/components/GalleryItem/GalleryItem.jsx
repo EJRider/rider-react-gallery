@@ -1,7 +1,19 @@
-function GalleryItem({gallery, putGallery}){
+function GalleryItem({item, putGallery, clicked}){
+    if(clicked === true){
+        return (
+            <>
+                <h3>{item.description}</h3>
+                <p>Likes: {item.likes}</p>
+            </>
+        )
+    }
+    else{
     return(
-        <h2> GalleryItem</h2>
-    )
+        <>
+            <img src={item.path}></img>
+            <p>Likes: {item.likes}</p>
+        </>
+    )}
 }
 
 export default GalleryItem
