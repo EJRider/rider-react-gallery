@@ -7,7 +7,7 @@ import GalleryList from '../GalleryList/GalleryList';
 function App() {
 
   let [gallery, setGallery] = useState([]);
-  let [clicked, setClicked] = useState(false);
+  // let [clicked, setClicked] = useState(false);
 
     useEffect(()=>{
       getGallery();
@@ -27,9 +27,28 @@ function App() {
         })      
     }
 
-    const putGallery = () => {
+    const putGallery = (itemId) => {
       console.log('putting gallery!')
 
+      axios.put(`/gallery/click/${itemId}`)
+        .then(response =>{
+          console.log('swapping')
+          getGallery();
+        })
+        .catch(err=>{
+          console.error('cannot swap values', err);
+        })
+    }
+
+    const likeImage = (itemId) => {
+      axios.put(`/gallery/like/${itemId}`)
+        .then(response =>{
+          console.log("liking image");
+          getGallery();
+        })
+        .catch(err =>{
+          console.error('cannot like image', err);
+        })
     }
 
     return (
@@ -38,7 +57,7 @@ function App() {
           <h1 className="App-title">Animal Gallery</h1>
         </header>
         <p>Gallery goes here</p>
-        <GalleryList gallery={gallery} putGallery={putGallery} clicked={clicked}/>
+        <GalleryList gallery={gallery} putGallery={putGallery} likeImage={likeImage} />
       </div>
     );
 }
